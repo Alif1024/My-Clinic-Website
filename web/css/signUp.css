@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+:root{
+    --bs-body-font-family: 'Nunito', sans-serif;
+    --green:#27ae60;
+    --blue1:#00bfff;
+    --blue2:#0db8de;
+    --light-green: #66FF66;
+    --light-black:#192a56;
+    --black:#000000;
+    --light-color:#666;
+    --white: #F2F2F2;
+    --orange: #FF9900;
+    --light-orange: #FDCB6E;
+    --gray: #666666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+html,
+body {
+    height: 100%;
+    background-color: var(--blue2) !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+.global-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+form {
+    padding-top: 10px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.login-form{
+    color: var(--light-color);
+    width: 380px;
+    height: 450px;
+    margin: 20px;
+    background: #fff !important;
+    border-radius: 10px !important;
+}
+
+input[type="text"],
+input[type="password"]{
+    background: #eee;
+    border: 2px solid #0db8de;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    outline: none;
+    border: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus{
+    outline: none;
+    border: none;
+}
+
+.card-tittle{
+    font-weight: 900;
+    padding-top: 20px;
+}
+
+.btn{
+    width: 100%;
+    background: #0db8de !important;
+    font-size: 14px;
+    transform: translateY(10px);
+    border-radius: 10px !important;
+
+}
+
+.signup{
+    text-align: center;
+    padding-top: 25px;
+}

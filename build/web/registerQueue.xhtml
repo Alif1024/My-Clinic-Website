@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="css/registerQueue.css"/>
+        <title>Register Queue</title>
+    </h:head>
+    <h:body>
+        
+    <!-- section navbar start -->
+    
+            <nav class="navbar navbar-expand-lg navbar-light bg-blue1">
+                <div class="container-fluid">
+                    <h:form>
+                        <h:commandLink class="navbar-brand" action="login" value="MY CLINIC"></h:commandLink>  
+                    </h:form>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                        <h:form>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <h:commandLink class="nb" action="index" value="Home"></h:commandLink>
+                                </li>
+                                <li class="nav-item">
+                                    <h:commandLink class="nb" action="registerQueue" value="Register"></h:commandLink>
+                                </li>
+                                <li class="nav-item">
+                                    <h:commandLink class="nb" action="index" value="About"></h:commandLink>
+                                </li>
+                                <li class="nav-item">
+                                    <h:commandLink class="nb" action="index" value="Contact"></h:commandLink>
+                                </li>
+                                <li class="nav-item">
+                                    <h:commandLink class="nb" action="queueList" value="Queue List"></h:commandLink>
+                                </li>
+                            </ul>                             
+                        </h:form>
+                    </div>               
+                </div>
+            </nav>
+    
+    <!-- section navbar end --> 
+        
+    <!-- section register start -->
+    
+    <section id="registerForm" class="registerForm">
+        
+        <div>
+            <div class="register-heading">
+            <h3 class="">My Clinic</h3>
+            <h1 class="">Register Form</h1>
+            </div>
+        </div>
+        
+        <h:form>
+            <div class="register">               
+                <label for="name" class=" mb-2" style="color:#666; font-size:1.2rem;">Name</label>
+                <h:inputText a:placeholder="Enter Your Name" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="name" value="#{queueBean.tbqueue.name}" required="true" requiredMessage="You Must Enter Your Name"></h:inputText>                                              
+                <label for="gender" class=" mb-2 mt-2" style="color:#666; font-size:1.2rem;">Gender</label>
+                <h:inputText a:placeholder="Enter Your Gender" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="gender" value="#{queueBean.tbqueue.gender}" required="true" requiredMessage="You Must Enter Your Gender" validator="#{queueBean.validateGender}" validatorMessage="Gender should be male or female"></h:inputText>                               
+                <label for="email" class=" mb-2" style="color:#666; font-size:1.2rem;">Email</label>
+                <h:inputText a:placeholder="Enter Your Email" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="email" value="#{queueBean.tbqueue.email}" required="true" requiredMessage="You Must Enter Your Email" validator="#{queueBean.validateEmail}" validatorMessage="Invalid Email ID"></h:inputText>                               
+                <label for="phone" class=" mb-2" style="color:#666; font-size:1.2rem;">Phone</label>
+                <h:inputText a:placeholder="Enter Your Phone" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="phone" value="#{queueBean.tbqueue.phone}" required="true" requiredMessage="You Must Enter Your Phone" validator="#{queueBean.validatePhone}" validatorMessage="Invalid Phone Number">
+                    <f:validateLength minimum="11" maximum="13"/>
+                </h:inputText>        
+                
+                
+                
+                <label for="date" class=" mb-2" style="color:#666; font-size:1.2rem;">Register Date</label>
+                <p:calendar a:placeholder="Enter Registration Date" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="date" required="true" requiredMessage="You Must Enter The Register Date" value="#{queueBean.tbqueue.registrationdate}"/>
+     
+                
+                
+                <label for="address" class=" mb-2" style="color:#666; font-size:1.2rem;">Address</label>
+                <h:inputTextarea a:placeholder="Enter Your Address" class="form-control form-control-sm fs-6" style="border:none; background: #eee; padding:0.8rem; border-radius: 0.5rem" id="address" value="#{queueBean.tbqueue.alamat}" required="true" requiredMessage="You Must Enter Your Address"></h:inputTextarea>                               
+                <p:growl id="growl" life="1000"/>
+                <h:message for="name" style="color:red"/>
+                <p:commandButton class="button text-white fw-bold fs-4 mt-4" style="border:none; background:#00bfff; padding:0.3rem 0.6rem 0.3rem 0.6rem; border-radius: 0.5rem;" value="Register" action="#{queueBean.addQueue()}" update="growl" />   
+            </div>   
+        </h:form>
+        
+    </section>     
+    
+    <!-- section register end -->
+
+    <!-- footer start -->
+     
+        <footer class="p-5 text-white contact" id="contact">
+
+        <div class="row">
+            <div class="col-md-3">
+              <h3 class="fw-bold">LAYANAN PELANGGAN</h3>
+              <ul>
+                <li>Pusat Bantuan</li>
+                <li>Cara Pemesanan</li>
+                <li>Cara Pembayaran</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h3 class="fw-bold">OPEN  CLOSE</h3>
+              <ul>
+                <li>Everyday</li>
+                <li>07:00 - 23:00 WIB</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h3 class="fw-bold">HUBUNGI KAMI</h3>
+              <ul>
+                <li>0812-9305-4296</li>
+                <li>myclinic@gmail.com</li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h3 class="fw-bold">FOLLOW US</h3>
+              <ul>
+                <li><a href="" class="text-white ">Facebook</a></li>
+                <li><a href="">Twitter</a></li>
+                <li><a href="">Instagram</a></li>
+              </ul>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- footer end -->
+    
+   <!-- copyright start -->
+
+    <div class="copyright text-center text-white fw-bold p-2">
+
+        <p>Developed by Group 4 3SE3 Copyright <i class="far-fa-copyright"></i> 2022</p>
+
+    </div>
+
+    <!-- copyright end -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </h:body>
+</html>
+
